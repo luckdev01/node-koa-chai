@@ -1,0 +1,14 @@
+.cache
+.DS_Store
+.env
+.git
+.gitignore
+.vscode
+config/*
+!config/default*
+!config/test*
+docker-compose.yml
+node_modules
+npm-debug.log
+yarn-error.log
+README.md

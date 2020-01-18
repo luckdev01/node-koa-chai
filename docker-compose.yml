@@ -1,0 +1,20 @@
+version: '3.2'
+
+services:
+  accord_postgres:
+    image: postgres:11-alpine
+    ports:
+      - "5432:5432"
+  accord_documents:
+    depends_on:
+      - accord_postgres
+    container_name: documents
+    build: .
+    ports:
+      - "5000:5000"
+      - "9229:9229"
+    environment:
+      - NODE_ENV
+    volumes:
+      - ./:/opt/app:rw
+      - /opt/app/node_modules
