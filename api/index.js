@@ -9,10 +9,10 @@ const router = new Router()
 router.put('/schema', async ctx => {
   knex.migrate
     .latest()
-    .then(function() {
+    .then(() => {
       return knex.seed.run()
     })
-    .then(function() {
+    .then(() => {
       ctx.body = {
         status: 'success',
         message: 'Migrations are finished!'
@@ -21,16 +21,9 @@ router.put('/schema', async ctx => {
 })
 
 router.post('/', documents.create)
-// router.get('/', documents.list)
+router.get('/', documents.list)
 router.get('/:document', documents.read)
 router.patch('/:document', documents.update)
 router.delete('/:document', documents.delete)
-
-router.get('/', async ctx => {
-  ctx.body = {
-    status: 'success',
-    message: 'hello, world!'
-  }
-})
 
 module.exports = router
