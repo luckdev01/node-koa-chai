@@ -1,6 +1,6 @@
 'use strict'
 
-const assert = require('chai').assert
+// const assert = require('chai').assert
 const sinon = require('sinon')
 const endpoints = require('./documents')
 
@@ -11,7 +11,7 @@ describe('documents', () => {
     sandbox.stub(endpoints, 'createDocument')
     sandbox.stub(endpoints, 'updateDocument')
     sandbox.stub(endpoints, 'getDocumentBy')
-    sandbox.stub(endpoints, 'deleteDocumen')
+    sandbox.stub(endpoints, 'deleteDocument')
   })
 
   afterEach(() => sandbox.reset())

@@ -2,20 +2,17 @@
 
 // TODO start server here
 
-const { Pool } = require('pg')
-const config = require('config')
-const client = new Pool({ connectionString: config.get('dbs.postgres.url') })
+const Koa = require('koa')
+const indexRoutes = require('./api/index')
+require('./db/connection')
 
-client.on('connect', () => {
-  console.log({
-    message: `postgres up and running`
-  })
+const PORT = process.env.PORT || 1337
+
+const app = new Koa()
+app.use(indexRoutes.routes())
+
+const server = app.listen(PORT, () => {
+  console.log(`Server listening on port: ${PORT}`)
 })
 
-client.on('error', (err) => {
-  console.log({
-    message: `postgres connection error ${err.message.toString()}`
-  })
-})
-
-client.query('SELECT 1').then(console.log, console.error)
+module.exports = server
