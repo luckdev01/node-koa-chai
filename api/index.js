@@ -1,13 +1,23 @@
 'use strict'
 
 const Router = require('koa-router')
-const createTable = require('../lib/create-table')
 const documents = require('./documents')
+const knex = require('../db/connection')
 
 const router = new Router()
 
 router.put('/schema', async ctx => {
-  ctx.body = await createTable()
+  knex.migrate
+    .latest()
+    .then(function() {
+      return knex.seed.run()
+    })
+    .then(function() {
+      ctx.body = {
+        status: 'success',
+        message: 'Migrations are finished!'
+      }
+    })
 })
 
 router.post('/', documents.create)
