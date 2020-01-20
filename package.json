@@ -6,11 +6,13 @@
     "config": "2.0.2",
     "knex": "^0.20.8",
     "koa": "2.11.0",
+    "koa-bodyparser": "^4.2.1",
     "koa-router": "7.4.0",
     "lodash.pick": "4.4.0",
     "path": "^0.12.7",
     "pg": "7.12.1",
-    "snakecase-keys": "3.1.0"
+    "snakecase-keys": "3.1.0",
+    "uuid": "^3.4.0"
   },
   "devDependencies": {
     "c8": "6.0.1",
@@ -21,7 +23,7 @@
     "standard": "14.3.1"
   },
   "scripts": {
-    "test": "mocha --inspect=0.0.0.0 $(find . -name 'standard.test.js' ! -ipath '*node_modules*' ! -ipath '*coverage*')",
+    "test": "mocha --inspect=0.0.0.0 $(find . -name 'update-document.test.js' ! -ipath '*node_modules*' ! -ipath '*coverage*')",
     "coverage": "export NODE_V8_COVERAGE=/tmp/coverage && yarn run test && c8 report --reporter=text-summary && c8 check-coverage --lines 95",
     "debug": "node --inspect=0.0.0.0 server.js",
     "run": "node server.js"

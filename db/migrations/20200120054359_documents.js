@@ -1,4 +1,4 @@
-exports.up = async function(knex) {
+exports.up = async knex => {
   await knex.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')
 
   return knex.schema.createTable('documents', table => {
@@ -15,6 +15,6 @@ exports.up = async function(knex) {
   })
 }
 
-exports.down = function(knex) {
+exports.down = knex => {
   return knex.schema.dropTable('documents')
 }
