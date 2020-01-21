@@ -4,14 +4,14 @@ RUN \
   yarn global add nodemon@2.0.1 && \
   yarn cache clean
 
-ENV NODE_ENV production
+ENV NODE_ENV development
 
 WORKDIR /opt/app
 
 COPY ["package.json", "*yarn*", "./"]
 
 RUN \
-  yarn --no-emoji --frozen-lockfile --production=true && \
+  yarn --no-emoji --frozen-lockfile --development=true && \
   yarn cache clean
 
 COPY ["./", "."]

@@ -3,7 +3,7 @@
 module.exports = {
   dbs: {
     postgres: {
-      url: 'postgres://localhost:5432/postgres'
+      url: 'postgresql://postgres@accord_postgres:5432/postgres'
     }
   }
 }

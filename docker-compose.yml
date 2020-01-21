@@ -4,15 +4,19 @@ services:
   accord_postgres:
     image: postgres:11-alpine
     ports:
-      - "5432:5432"
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD:
+      POSTGRES_DB: postgres
   accord_documents:
     depends_on:
       - accord_postgres
     container_name: documents
     build: .
     ports:
-      - "5000:5000"
-      - "9229:9229"
+      - '5000:5000'
+      - '9229:9229'
     environment:
       - NODE_ENV
     volumes:
