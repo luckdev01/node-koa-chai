@@ -4,4 +4,4 @@
 
 # Test
 
-    docker-compose build && docker-compose run accord_documents yarn test
+    docker-compose build && docker-compose run accord_documents yarn migrate && yarn seed && yarn test
